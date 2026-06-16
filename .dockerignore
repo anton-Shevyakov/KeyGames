@@ -1,0 +1,9 @@
+target/
+.idea/
+.git/
+uploads/
+*.md
+docs/
+node_modules/
+.env
+.env.*

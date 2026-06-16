@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Адмін — KeyGames</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css?v=31">
+</head>
+<body class="app-body">
+    <aside id="sidebar" class="sidebar"></aside>
+    <div class="main-wrapper">
+        <main class="page-section page-centered">
+            <h1 class="section-title section-title-center">Адмін панель</h1>
+            <div class="content-centered-wide">
+            <div class="admin-tabs">
+                <button class="tab-btn active" data-tab="games">Список ігор</button>
+                <button class="tab-btn" data-tab="add-game">Додати гру</button>
+            </div>
+            <div id="games-tab" class="tab-content active">
+                <div id="admin-games-grid" class="games-grid"><div class="loading">Завантаження...</div></div>
+            </div>
+            <div id="add-game-tab" class="tab-content">
+                <form id="add-game-form" class="admin-form">
+                    <div class="form-group"><label for="game-title">Назва</label><input id="game-title" class="input" required></div>
+                    <div class="form-group"><label for="game-description">Опис</label><textarea id="game-description" class="input" rows="4" required></textarea></div>
+                    <div class="form-row">
+                        <div class="form-group"><label for="game-genre">Жанр</label><select id="game-genre" class="input" required></select></div>
+                        <div class="form-group"><label for="game-launcher">Лаунчер</label><input id="game-launcher" class="input" required placeholder="Steam, Epic, GOG..."></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group"><label for="game-price">Ціна (₴)</label><input id="game-price" type="number" step="0.01" class="input" required></div>
+                        <div class="form-group"><label for="game-stock">Кількість ключів</label><input id="game-stock" type="number" class="input" required></div>
+                    </div>
+                    <div class="form-group"><label for="game-release-date">Дата випуску</label><input id="game-release-date" type="date" class="input" required></div>
+                    <div class="form-group"><label for="game-image">Зображення</label><input id="game-image" type="file" accept="image/*" class="input"></div>
+                    <button type="submit" class="btn btn-primary">Додати гру</button>
+                    <div id="form-error" class="error-message" style="display:none"></div>
+                    <div id="form-success" class="success-message" style="display:none"></div>
+                </form>
+            </div>
+            </div>
+        </main>
+        <footer class="app-footer"><p>&copy; 2025 KeyGames</p></footer>
+    </div>
+    <div id="edit-game-modal" class="modal">
+        <div class="modal-content"><span class="close" onclick="document.getElementById('edit-game-modal').style.display='none'">&times;</span><div id="edit-game-body"></div></div>
+    </div>
+    <script src="/js/config.js"></script>
+    <script src="/js/api.js?v=28"></script>
+    <script src="/js/cart.js"></script>
+    <script src="/js/layout.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/admin.js"></script>
+</body>
+</html>

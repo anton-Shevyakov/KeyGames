@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог — KeyGames</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <link rel="stylesheet" href="/css/style.css?v=32">
+</head>
+<body class="app-body">
+    <aside id="sidebar" class="sidebar"></aside>
+    <div class="main-wrapper">
+        <main class="page-section catalog-page">
+            <div class="page-split catalog-split">
+                <div class="page-split-main catalog-main">
+                    <div class="page-header">
+                        <h1 class="section-title" style="margin-bottom:0">Каталог ігор</h1>
+                        <p>Оберіть гру зі списку</p>
+                    </div>
+
+                    <div id="games-grid" class="games-grid"><div class="loading">Завантаження...</div></div>
+                </div>
+
+                <aside class="page-split-side filter-sidebar">
+                    <div class="filter-panel">
+                        <div class="filter-panel-title">Фільтри</div>
+                        <div class="filter-stack">
+                            <div class="filter-field">
+                                <label for="search-input">Пошук</label>
+                                <input id="search-input" class="input" placeholder="Назва гри...">
+                            </div>
+                            <div class="filter-field">
+                                <label for="genre-input">Жанр</label>
+                                <select id="genre-input" class="input"></select>
+                            </div>
+                            <div class="filter-field">
+                                <label for="min-price">Ціна від</label>
+                                <input id="min-price" class="input" type="number" placeholder="0" min="0" step="0.01">
+                            </div>
+                            <div class="filter-field">
+                                <label for="max-price">Ціна до</label>
+                                <input id="max-price" class="input" type="number" placeholder="Без ліміту" min="0" step="0.01">
+                            </div>
+                            <div class="filter-actions">
+                                <button id="search-btn" class="btn btn-primary btn-block">Знайти</button>
+                                <button id="reset-btn" class="btn btn-ghost btn-block">Скинути</button>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </main>
+        <footer class="app-footer"><p>&copy; 2025 KeyGames</p></footer>
+    </div>
+
+    <div id="game-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="/js/config.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/cart.js"></script>
+    <script src="/js/layout.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/reviews.js?v=1"></script>
+    <script src="/js/games.js?v=25"></script>
+</body>
+</html>

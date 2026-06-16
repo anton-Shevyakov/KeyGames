@@ -1,0 +1,31 @@
+# Maven / Java
+target/
+*.class
+*.jar
+*.war
+*.log
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Локальні завантаження (не комітити)
+uploads/
+
+# Тимчасові / локальні екстракти
+ekonom_sample_extracted.txt
+sample_diploma_ekonom.txt
+shevyakov_pravky.txt
+tep_pdf.txt
+current_ekonom.txt
+
+# Env / secrets
+.env
+.env.*
+*.local.yml

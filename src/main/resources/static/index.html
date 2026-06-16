@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KeyGames — Магазин ігор</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css?v=33">
+</head>
+<body class="app-body">
+    <aside id="sidebar" class="sidebar"></aside>
+    <div class="main-wrapper">
+        <main>
+            <section class="epic-hero">
+                <div class="epic-hero-layout">
+                    <div class="epic-hero-inner">
+                        <h1>Цифрові ключі для ваших улюблених ігор</h1>
+                        <p>Миттєва доставка після оплати. Steam, Epic Games, GOG та інші лаунчери — все в одному місці.</p>
+                        <div class="hero-actions">
+                            <a href="/games.html" class="btn btn-large btn-primary">Переглянути каталог</a>
+                            <a href="/cart.html" id="hero-cart-link" class="btn btn-large btn-ghost">Кошик</a>
+                        </div>
+                    </div>
+                    <aside class="hero-features" aria-label="Переваги магазину">
+                        <div class="feature-pill">
+                            <h3>Миттєва доставка</h3>
+                            <p>Ключ надходить одразу після успішної оплати</p>
+                        </div>
+                        <div class="feature-pill">
+                            <h3>Безпечна оплата</h3>
+                            <p>Sandbox-режим для тестування покупок</p>
+                        </div>
+                        <div class="feature-pill">
+                            <h3>Великий каталог</h3>
+                            <p>Фільтри за жанром, ціною та лаунчером</p>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+            <section class="page-section">
+                <h2 class="section-title">Популярні ігри</h2>
+                <div id="games-grid" class="games-grid home-games-grid"><div class="loading">Завантаження...</div></div>
+            </section>
+        </main>
+        <footer class="app-footer"><p>&copy; 2025 KeyGames. Всі права захищені.</p></footer>
+    </div>
+
+    <div id="game-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="/js/config.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/cart.js"></script>
+    <script src="/js/layout.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/reviews.js?v=1"></script>
+    <script src="/js/main.js?v=22"></script>
+</body>
+</html>

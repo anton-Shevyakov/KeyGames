@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вхід — KeyGames</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css?v=31">
+</head>
+<body class="app-body">
+    <aside id="sidebar" class="sidebar"></aside>
+    <div class="main-wrapper">
+        <main class="page-section auth-section">
+            <div class="auth-card">
+                <h2>Вхід</h2>
+                <form id="login-form">
+                    <div class="form-group"><label for="username">Логін</label><input id="username" class="input" required autocomplete="username"></div>
+                    <div class="form-group"><label for="password">Пароль</label><input id="password" type="password" class="input" required autocomplete="current-password"></div>
+                    <button type="submit" class="btn btn-primary btn-block">Увійти</button>
+                    <div id="error-message" class="error-message" style="display:none"></div>
+                </form>
+                <p class="auth-link">Немає акаунту? <a href="/register.html">Зареєструватися</a></p>
+            </div>
+        </main>
+    </div>
+    <script src="/js/config.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/cart.js"></script>
+    <script src="/js/layout.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/login.js"></script>
+</body>
+</html>

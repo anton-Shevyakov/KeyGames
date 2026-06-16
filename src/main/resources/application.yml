@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: KeyGames
+  datasource:
+    url: jdbc:postgresql://localhost:5432/game_store
+    username: KeyGames
+    password: 1234567890
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    open-in-view: false
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+logging:
+  level:
+    org.springframework.web: DEBUG
+    org.hibernate: DEBUG
+    com.example.gamestore: DEBUG
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+
+server:
+  port: 8080
+
+app:
+  upload:
+    dir: uploads
+
+# Replace credentials above with your own database connection settings.
+
