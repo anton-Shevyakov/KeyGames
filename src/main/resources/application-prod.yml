@@ -1,12 +1,13 @@
 spring:
-  datasource:
-    url: jdbc:postgresql://${PGHOST}:${PGPORT}/${PGDATABASE}
-    username: ${PGUSER}
-    password: ${PGPASSWORD}
-    driver-class-name: org.postgresql.Driver
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
   jpa:
     hibernate:
       ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: false
     open-in-view: false
 
@@ -16,6 +17,8 @@ server:
 logging:
   level:
     root: INFO
+    org.hibernate: WARN
+    org.springframework.web: WARN
     com.example.gamestore: INFO
 
 app:
