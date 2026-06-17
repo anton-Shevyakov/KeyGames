@@ -1,6 +1,17 @@
-const API_BASE = (typeof window !== 'undefined' && window.KEYGAMES_API_URL)
-    ? String(window.KEYGAMES_API_URL).replace(/\/$/, '')
-    : '';
+const RAILWAY_API = 'https://keygames-production.up.railway.app';
+
+function resolveApiBase() {
+    if (typeof window === 'undefined') return '';
+    const configured = window.KEYGAMES_API_URL;
+    if (configured && String(configured).trim()) {
+        return String(configured).replace(/\/$/, '');
+    }
+    const host = window.location.hostname;
+    if (host === 'localhost' || host === '127.0.0.1') return '';
+    return RAILWAY_API;
+}
+
+const API_BASE = resolveApiBase();
 
 function resolveAssetUrl(url) {
     if (!url) return '';
