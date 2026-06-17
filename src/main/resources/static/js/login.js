@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
         errorMessage.style.display = 'none';
 
         try {
+            localStorage.removeItem('authToken');
+            localStorage.removeItem('currentUser');
             const response = await authAPI.login(username, password);
 
             // Store auth token and user info

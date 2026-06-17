@@ -2,12 +2,14 @@ const RAILWAY_API = 'https://keygames-production.up.railway.app';
 
 function resolveApiBase() {
     if (typeof window === 'undefined') return '';
+    const host = window.location.hostname;
+    if (host === 'localhost' || host === '127.0.0.1' || host.endsWith('.railway.app') || host.endsWith('.vercel.app')) {
+        return '';
+    }
     const configured = window.KEYGAMES_API_URL;
     if (configured && String(configured).trim()) {
         return String(configured).replace(/\/$/, '');
     }
-    const host = window.location.hostname;
-    if (host === 'localhost' || host === '127.0.0.1' || host.endsWith('.railway.app') || host.endsWith('.vercel.app')) return '';
     return RAILWAY_API;
 }
 

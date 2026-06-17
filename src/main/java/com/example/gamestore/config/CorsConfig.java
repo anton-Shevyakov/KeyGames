@@ -15,13 +15,17 @@ public class CorsConfig {
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource(
-            @Value("${app.cors.allowed-origins:https://*.vercel.app,http://localhost:*}") String allowedOrigins) {
+            @Value("${app.cors.allowed-origins:https://*.vercel.app,https://*.railway.app,http://localhost:*}") String allowedOrigins) {
         CorsConfiguration config = new CorsConfiguration();
-        List<String> patterns = Arrays.stream(allowedOrigins.split(","))
+        java.util.LinkedHashSet<String> patterns = new java.util.LinkedHashSet<>();
+        patterns.add("https://*.vercel.app");
+        patterns.add("https://*.railway.app");
+        patterns.add("http://localhost:*");
+        Arrays.stream(allowedOrigins.split(","))
                 .map(String::trim)
                 .filter(s -> !s.isEmpty())
-                .toList();
-        config.setAllowedOriginPatterns(patterns);
+                .forEach(patterns::add);
+        config.setAllowedOriginPatterns(new java.util.ArrayList<>(patterns));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true);

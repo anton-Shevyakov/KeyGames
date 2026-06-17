@@ -33,7 +33,7 @@
 |----------|--------|
 | `SPRING_PROFILES_ACTIVE` | `prod` |
 | **`DATABASE_URL`** | **`${{Postgres.DATABASE_URL}}`** — кнопка **Add DATABASE_URL variable** або **New Variable → Reference** |
-| `CORS_ALLOWED_ORIGINS` | `https://твій-сайт.vercel.app,https://*.vercel.app` |
+| `CORS_ALLOWED_ORIGINS` | `https://key-games.vercel.app,https://*.vercel.app,https://*.railway.app` |
 | `APP_UPLOAD_DIR` | `/tmp/uploads` |
 
 Без `DATABASE_URL` Spring **не стартує** → healthcheck `/api/status` падає 5 хвилин.

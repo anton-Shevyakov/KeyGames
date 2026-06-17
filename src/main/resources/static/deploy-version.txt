@@ -1,2 +1,2 @@
-deploy=2026-06-17-v4
-commit=fix-auth-cors-proxy-utf8
+deploy=2026-06-17-v5
+commit=fix-cors-railway-origin
