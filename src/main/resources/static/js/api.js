@@ -7,7 +7,7 @@ function resolveApiBase() {
         return String(configured).replace(/\/$/, '');
     }
     const host = window.location.hostname;
-    if (host === 'localhost' || host === '127.0.0.1') return '';
+    if (host === 'localhost' || host === '127.0.0.1' || host.endsWith('.railway.app')) return '';
     return RAILWAY_API;
 }
 
