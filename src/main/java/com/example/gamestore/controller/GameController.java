@@ -69,7 +69,7 @@ public class GameController {
         return gameService.getGame(id);
     }
 
-    @PostMapping
+    @PostMapping(value = {"", "/"})
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<GameResponse> createGame(@Valid @RequestBody GameRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(gameService.createGame(request));

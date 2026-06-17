@@ -48,7 +48,7 @@ function parseApiError(errorBody, status) {
 
 async function apiRequest(url, options = {}) {
     const method = (options.method || 'GET').toUpperCase();
-    const headers = { ...options.headers };
+    const headers = { Accept: 'application/json', ...options.headers };
     const token = getAuthToken();
     if (token) headers['Authorization'] = token;
     if (options.body != null && method !== 'GET' && method !== 'HEAD') {

@@ -25,15 +25,23 @@
 2. Root directory: корінь проєкту (там є `Dockerfile` і `pom.xml`).
 3. Railway зчитує `railway.json` і будує через **Dockerfile**.
 
-### 1.3. Змінні окруження (Variables)
+### 1.3. Змінні окруження (Variables) — **обов’язково**
+
+У сервісі **KeyGames** (не в Postgres!) відкрити **Variables**:
 
 | Variable | Value |
 |----------|--------|
 | `SPRING_PROFILES_ACTIVE` | `prod` |
+| **`DATABASE_URL`** | **`${{Postgres.DATABASE_URL}}`** — кнопка **Add DATABASE_URL variable** або **New Variable → Reference** |
 | `CORS_ALLOWED_ORIGINS` | `https://твій-сайт.vercel.app,https://*.vercel.app` |
 | `APP_UPLOAD_DIR` | `/tmp/uploads` |
 
-Змінні PostgreSQL (`PGHOST`, `PGPORT`, …) Railway підставляє автоматично, якщо БД у тому ж проєкті (Reference Variable).
+Без `DATABASE_URL` Spring **не стартує** → healthcheck `/api/status` падає 5 хвилин.
+
+**Важливо:** копіюй **`DATABASE_URL`** з Postgres (внутрішній, хост `*.railway.internal`).  
+**Не** використовуй `DATABASE_PUBLIC_URL` — з KeyGames буде `Connect timed out`.
+
+Альтернатива: окремі змінні з Postgres — `PGHOST`, `PGPORT`, `PGUSER`, `PGPASSWORD`, `PGDATABASE` (теж внутрішні, не public).
 
 ### 1.4. Публічний домен
 

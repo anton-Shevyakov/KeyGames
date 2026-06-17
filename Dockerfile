@@ -11,6 +11,5 @@ WORKDIR /app
 RUN mkdir -p /tmp/uploads
 COPY --from=build /app/target/gamestore-0.0.1-SNAPSHOT.jar app.jar
 ENV SPRING_PROFILES_ACTIVE=prod
-ENV PORT=8080
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
