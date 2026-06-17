@@ -8,22 +8,6 @@
       "destination": "https://keygames-production.up.railway.app/api/:path*"
     },
     {
-      "source": "/games",
-      "destination": "https://keygames-production.up.railway.app/games"
-    },
-    {
-      "source": "/games/:path*",
-      "destination": "https://keygames-production.up.railway.app/games/:path*"
-    },
-    {
-      "source": "/orders",
-      "destination": "https://keygames-production.up.railway.app/orders"
-    },
-    {
-      "source": "/orders/:path*",
-      "destination": "https://keygames-production.up.railway.app/orders/:path*"
-    },
-    {
       "source": "/uploads/:path*",
       "destination": "https://keygames-production.up.railway.app/uploads/:path*"
     }
