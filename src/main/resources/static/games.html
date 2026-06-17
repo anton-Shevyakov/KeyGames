@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>������� � KeyGames</title>
+    <title>Каталог — KeyGames</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -17,36 +17,34 @@
             <div class="page-split catalog-split">
                 <div class="page-split-main catalog-main">
                     <div class="page-header">
-                        <h1 class="section-title" style="margin-bottom:0">������� ����</h1>
-                        <p>������ ��� � ������</p>
+                        <h1 class="section-title" style="margin-bottom:0">Каталог ігор</h1>
+                        <p>Знайди гру мрії</p>
                     </div>
-
-                    <div id="games-grid" class="games-grid"><div class="loading">������������...</div></div>
+                    <div id="games-grid" class="games-grid"><div class="loading">Завантаження...</div></div>
                 </div>
-
                 <aside class="page-split-side filter-sidebar">
                     <div class="filter-panel">
-                        <div class="filter-panel-title">Գ�����</div>
+                        <div class="filter-panel-title">Фільтри</div>
                         <div class="filter-stack">
                             <div class="filter-field">
-                                <label for="search-input">�����</label>
-                                <input id="search-input" class="input" placeholder="����� ���...">
+                                <label for="search-input">Пошук</label>
+                                <input id="search-input" class="input" placeholder="Назва гри...">
                             </div>
                             <div class="filter-field">
-                                <label for="genre-input">����</label>
+                                <label for="genre-input">Жанр</label>
                                 <select id="genre-input" class="input"></select>
                             </div>
                             <div class="filter-field">
-                                <label for="min-price">ֳ�� ��</label>
+                                <label for="min-price">Ціна від</label>
                                 <input id="min-price" class="input" type="number" placeholder="0" min="0" step="0.01">
                             </div>
                             <div class="filter-field">
-                                <label for="max-price">ֳ�� ��</label>
-                                <input id="max-price" class="input" type="number" placeholder="��� ����" min="0" step="0.01">
+                                <label for="max-price">Ціна до</label>
+                                <input id="max-price" class="input" type="number" placeholder="Без ліміту" min="0" step="0.01">
                             </div>
                             <div class="filter-actions">
-                                <button id="search-btn" class="btn btn-primary btn-block">������</button>
-                                <button id="reset-btn" class="btn btn-ghost btn-block">�������</button>
+                                <button id="search-btn" class="btn btn-primary btn-block">Знайти</button>
+                                <button id="reset-btn" class="btn btn-ghost btn-block">Скинути</button>
                             </div>
                         </div>
                     </div>
@@ -55,16 +53,14 @@
         </main>
         <footer class="app-footer"><p>&copy; 2025 KeyGames</p></footer>
     </div>
-
     <div id="game-modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <div id="modal-body"></div>
         </div>
     </div>
-
-    <script src="/js/config.js?v=35"></script>
-    <script src="/js/api.js?v=35"></script>
+    <script src="/js/config.js?v=36"></script>
+    <script src="/js/api.js?v=36"></script>
     <script src="/js/cart.js"></script>
     <script src="/js/layout.js"></script>
     <script src="/js/auth.js"></script>

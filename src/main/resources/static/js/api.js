@@ -7,7 +7,7 @@ function resolveApiBase() {
         return String(configured).replace(/\/$/, '');
     }
     const host = window.location.hostname;
-    if (host === 'localhost' || host === '127.0.0.1' || host.endsWith('.railway.app')) return '';
+    if (host === 'localhost' || host === '127.0.0.1' || host.endsWith('.railway.app') || host.endsWith('.vercel.app')) return '';
     return RAILWAY_API;
 }
 
@@ -72,12 +72,13 @@ function normalizeApiPath(url) {
 async function apiRequest(url, options = {}) {
     const method = (options.method || 'GET').toUpperCase();
     const headers = { Accept: 'application/json', ...options.headers };
+    const apiPath = normalizeApiPath(url);
+    const isPublicAuth = apiPath.startsWith('/api/auth/');
     const token = getAuthToken();
-    if (token) headers['Authorization'] = token;
+    if (token && !isPublicAuth) headers['Authorization'] = token;
     if (options.body != null && method !== 'GET' && method !== 'HEAD') {
         headers['Content-Type'] = 'application/json';
     }
-    const apiPath = normalizeApiPath(url);
     const response = await fetch(API_BASE + apiPath, { ...options, headers });
     if (!response.ok) {
         const error = await response.json().catch(() => ({}));
