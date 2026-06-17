@@ -1,13 +1,6 @@
 {
   "version": 2,
   "outputDirectory": "src/main/resources/static",
-  "redirects": [
-    {
-      "source": "/:path*",
-      "destination": "https://keygames-production.up.railway.app/:path*",
-      "permanent": false
-    }
-  ],
   "headers": [
     {
       "source": "/js/(.*)",

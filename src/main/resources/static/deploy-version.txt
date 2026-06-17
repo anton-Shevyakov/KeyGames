@@ -1,2 +1,2 @@
-deploy=2026-06-17-v2
-commit=redirect-to-railway
+deploy=2026-06-17-v3
+commit=fix-auth-bom-redirect
