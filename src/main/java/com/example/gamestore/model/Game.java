@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -48,7 +47,7 @@ public class Game {
     @Column(length = 500)
     private String imageUrl;
 
-    @OneToMany(mappedBy = "game", cascade = CascadeType.ALL, orphanRemoval = false)
+    @OneToMany(mappedBy = "game")
     private List<OrderItem> orderItems = new ArrayList<>();
 
     public Game() {

@@ -71,6 +71,11 @@ public class GameKeyService {
         }
     }
 
+    @Transactional
+    public void deleteAllForGame(Long gameId) {
+        gameKeyRepository.deleteByGameId(gameId);
+    }
+
     private String generateKey() {
         String code;
         int attempts = 0;

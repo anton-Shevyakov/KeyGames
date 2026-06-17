@@ -4,5 +4,5 @@ import com.example.gamestore.model.OrderItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface OrderItemRepository extends JpaRepository<OrderItem, Long> {
+    boolean existsByGameId(Long gameId);
 }
-

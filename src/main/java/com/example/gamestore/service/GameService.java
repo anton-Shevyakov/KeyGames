@@ -6,7 +6,9 @@ import com.example.gamestore.dto.GameUpdateRequest;
 import com.example.gamestore.model.Game;
 import com.example.gamestore.model.GameGenres;
 import com.example.gamestore.repository.GameRepository;
+import com.example.gamestore.repository.OrderItemRepository;
 import com.example.gamestore.repository.ReviewRepository;
+import com.example.gamestore.repository.WishlistRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.criteria.Predicate;
 import org.springframework.data.domain.PageRequest;
@@ -30,15 +32,20 @@ public class GameService {
     private final GameKeyService gameKeyService;
     private final ReviewService reviewService;
     private final ReviewRepository reviewRepository;
+    private final OrderItemRepository orderItemRepository;
+    private final WishlistRepository wishlistRepository;
 
     public GameService(GameRepository gameRepository, ImageStorageService imageStorageService,
                        GameKeyService gameKeyService, ReviewService reviewService,
-                       ReviewRepository reviewRepository) {
+                       ReviewRepository reviewRepository, OrderItemRepository orderItemRepository,
+                       WishlistRepository wishlistRepository) {
         this.gameRepository = gameRepository;
         this.imageStorageService = imageStorageService;
         this.gameKeyService = gameKeyService;
         this.reviewService = reviewService;
         this.reviewRepository = reviewRepository;
+        this.orderItemRepository = orderItemRepository;
+        this.wishlistRepository = wishlistRepository;
     }
 
     @Transactional(readOnly = true)
@@ -61,7 +68,8 @@ public class GameService {
             if (genre != null) p.add(cb.equal(cb.lower(root.get("genre")), genre.toLowerCase()));
             if (minPrice != null) p.add(cb.greaterThanOrEqualTo(root.get("price"), minPrice));
             if (maxPrice != null) p.add(cb.lessThanOrEqualTo(root.get("price"), maxPrice));
-            return p.isEmpty() ? cb.conjunction() : cb.and(p.toArray(Predicate[]::new));
+            p.add(cb.equal(root.get("isActive"), true));
+            return cb.and(p.toArray(Predicate[]::new));
         };
     }
 
@@ -159,8 +167,15 @@ public class GameService {
     @Transactional
     public void deleteGame(Long id) {
         Game game = gameRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Game not found"));
-        imageStorageService.deleteImage(game.getImageUrl());
+        if (orderItemRepository.existsByGameId(id)) {
+            game.setIsActive(false);
+            gameRepository.save(game);
+            return;
+        }
+        wishlistRepository.deleteByGameId(id);
         reviewRepository.deleteByGameId(id);
+        gameKeyService.deleteAllForGame(id);
+        imageStorageService.deleteImage(game.getImageUrl());
         gameRepository.delete(game);
     }
 

@@ -3,6 +3,7 @@ package com.example.gamestore.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -16,4 +17,12 @@ public interface GameKeyRepository extends JpaRepository<GameKey, Long> {
     List<GameKey> findAvailableByGameId(@Param("gameId") Long gameId);
 
     List<GameKey> findByOrderItemId(Long orderItemId);
+
+    @Modifying
+    @Query("UPDATE GameKey gk SET gk.orderItem = null, gk.assigned = false WHERE gk.game.id = :gameId")
+    void releaseAllForGame(@Param("gameId") Long gameId);
+
+    @Modifying
+    @Query("DELETE FROM GameKey gk WHERE gk.game.id = :gameId")
+    void deleteByGameId(@Param("gameId") Long gameId);
 }

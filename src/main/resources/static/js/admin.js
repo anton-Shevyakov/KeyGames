@@ -191,6 +191,7 @@ async function handleDeleteGame(gameId) {
     try {
         await gamesAPI.deleteGame(gameId);
         await loadAdminGames();
+        showToast('Гру видалено або приховано з каталогу', 'success');
     } catch (error) {
         alert('Помилка видалення гри: ' + error.message);
     }

@@ -18,4 +18,5 @@ public interface WishlistRepository extends JpaRepository<WishlistItem, Long> {
     List<WishlistItem> findByUserIdOrderByGameTitleAsc(@Param("userId") Long userId);
     Optional<WishlistItem> findByUserIdAndGameId(Long userId, Long gameId);
     boolean existsByUserIdAndGameId(Long userId, Long gameId);
+    void deleteByGameId(Long gameId);
 }
