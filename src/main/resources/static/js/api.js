@@ -46,6 +46,18 @@ function parseApiError(errorBody, status) {
     return `HTTP ${status}`;
 }
 
+function normalizeApiPath(url) {
+    if (!url || !url.startsWith('/')) return url;
+    if (url.startsWith('/api/')) return url;
+    if (url === '/games' || url.startsWith('/games/') || url.startsWith('/games?')) {
+        return '/api' + url;
+    }
+    if (url === '/orders' || url.startsWith('/orders/') || url.startsWith('/orders?')) {
+        return '/api' + url;
+    }
+    return url;
+}
+
 async function apiRequest(url, options = {}) {
     const method = (options.method || 'GET').toUpperCase();
     const headers = { Accept: 'application/json', ...options.headers };
@@ -54,7 +66,8 @@ async function apiRequest(url, options = {}) {
     if (options.body != null && method !== 'GET' && method !== 'HEAD') {
         headers['Content-Type'] = 'application/json';
     }
-    const response = await fetch(API_BASE + url, { ...options, headers });
+    const apiPath = normalizeApiPath(url);
+    const response = await fetch(API_BASE + apiPath, { ...options, headers });
     if (!response.ok) {
         const error = await response.json().catch(() => ({}));
         throw new Error(parseApiError(error, response.status));
@@ -89,7 +102,7 @@ const gamesAPI = {
         if (token) headers['Authorization'] = token;
         const fd = new FormData();
         fd.append('file', file);
-        const r = await fetch(API_BASE + `/api/games/${id}/image`, { method: 'POST', headers, body: fd });
+        const r = await fetch(API_BASE + normalizeApiPath(`/api/games/${id}/image`), { method: 'POST', headers, body: fd });
         if (!r.ok) throw new Error(parseApiError(await r.json().catch(() => ({})), r.status));
         return r.json();
     }
