@@ -1,6 +1,7 @@
 package com.example.gamestore.controller;
 
 import java.math.BigDecimal;
+import java.net.URI;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -85,6 +86,15 @@ public class GameController {
     @PreAuthorize("hasRole('ADMIN')")
     public GameResponse updateGame(@PathVariable Long id, @Valid @RequestBody GameUpdateRequest request) {
         return gameService.updateGame(id, request);
+    }
+
+    @GetMapping("/{id}/image")
+    public ResponseEntity<Void> redirectGameImage(@PathVariable Long id) {
+        GameResponse game = gameService.getGame(id);
+        if (game.imageUrl() == null || game.imageUrl().isBlank()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.status(HttpStatus.FOUND).location(URI.create(game.imageUrl())).build();
     }
 
     @PostMapping("/{id}/image")
