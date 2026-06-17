@@ -1,5 +1,31 @@
 {
   "version": 2,
   "buildCommand": "node scripts/vercel-config.js",
-  "outputDirectory": "src/main/resources/static"
+  "outputDirectory": "src/main/resources/static",
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://keygames-production.up.railway.app/api/:path*"
+    },
+    {
+      "source": "/games/:path*",
+      "destination": "https://keygames-production.up.railway.app/games/:path*"
+    },
+    {
+      "source": "/games",
+      "destination": "https://keygames-production.up.railway.app/games"
+    },
+    {
+      "source": "/orders/:path*",
+      "destination": "https://keygames-production.up.railway.app/orders/:path*"
+    },
+    {
+      "source": "/orders",
+      "destination": "https://keygames-production.up.railway.app/orders"
+    },
+    {
+      "source": "/uploads/:path*",
+      "destination": "https://keygames-production.up.railway.app/uploads/:path*"
+    }
+  ]
 }

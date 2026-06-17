@@ -1,0 +1,7 @@
+{
+  "name": "keygames-frontend",
+  "private": true,
+  "scripts": {
+    "vercel-build": "node scripts/vercel-config.js"
+  }
+}
