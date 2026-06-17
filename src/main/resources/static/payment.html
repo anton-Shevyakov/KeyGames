@@ -1,9 +1,9 @@
-п»ї<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>РћРїР»Р°С‚Р° вЂ” KeyGames</title>
+    <title>Оплата — KeyGames</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css?v=31">
@@ -12,30 +12,30 @@
     <aside id="sidebar" class="sidebar"></aside>
     <div class="main-wrapper">
         <main class="page-section">
-            <h1 class="section-title">РћРїР»Р°С‚Р°</h1>
+            <h1 class="section-title">Оплата</h1>
             <div class="checkout-container">
                 <div class="checkout-form-container">
-                    <h2>Р”Р°РЅС– РєР°СЂС‚РєРё</h2>
+                    <h2>Дані картки</h2>
                     <form id="payment-form">
-                        <div class="form-group"><label for="card-number">РќРѕРјРµСЂ РєР°СЂС‚РєРё</label><input id="card-number" class="input" placeholder="4242 4242 4242 4242" required></div>
+                        <div class="form-group"><label for="card-number">Номер картки</label><input id="card-number" class="input" placeholder="4242 4242 4242 4242" required></div>
                         <div class="form-row">
-                            <div class="form-group"><label for="card-expiry">РўРµСЂРјС–РЅ (MM/YY)</label><input id="card-expiry" class="input" placeholder="12/30" required></div>
+                            <div class="form-group"><label for="card-expiry">Термін (MM/YY)</label><input id="card-expiry" class="input" placeholder="12/30" required></div>
                             <div class="form-group"><label for="card-cvv">CVV</label><input id="card-cvv" class="input" placeholder="123" maxlength="3" inputmode="numeric" pattern="\d{3}" required></div>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block">РћРїР»Р°С‚РёС‚Рё</button>
+                        <button type="submit" class="btn btn-primary btn-block">Оплатити</button>
                         <div id="payment-error" class="error-message" style="display:none"></div>
                     </form>
                 </div>
                 <div class="checkout-summary">
-                    <h2>Р”РµС‚Р°Р»С–</h2>
-                    <div id="payment-summary"><div class="loading">Р—Р°РІР°РЅС‚Р°Р¶РµРЅРЅСЏ...</div></div>
+                    <h2>Деталі</h2>
+                    <div id="payment-summary"><div class="loading">Завантаження...</div></div>
                 </div>
             </div>
         </main>
         <footer class="app-footer"><p>&copy; 2025 KeyGames</p></footer>
     </div>
-    <script src="/js/config.js"></script>
-    <script src="/js/api.js"></script>
+    <script src="/js/config.js?v=29"></script>
+    <script src="/js/api.js?v=29"></script>
     <script src="/js/cart.js"></script>
     <script src="/js/layout.js"></script>
     <script src="/js/auth.js"></script>
