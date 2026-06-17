@@ -27,7 +27,7 @@ import jakarta.validation.constraints.PositiveOrZero;
 
 @Validated
 @RestController
-@RequestMapping("/api/orders")
+@RequestMapping({"/api/orders", "/orders"})
 public class OrderController {
 
     private final OrderService orderService;

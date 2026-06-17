@@ -31,7 +31,7 @@ import jakarta.validation.constraints.PositiveOrZero;
 
 @Validated
 @RestController
-@RequestMapping("/api/games")
+@RequestMapping({"/api/games", "/games"})
 public class GameController {
 
     private final GameService gameService;
