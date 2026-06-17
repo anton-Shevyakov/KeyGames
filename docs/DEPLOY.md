@@ -80,6 +80,15 @@
 
 **Deploy** → отримати URL, наприклад `https://keygames.vercel.app`
 
+**Якщо Vercel показує старий commit** (наприклад «Fix Vercel API proxy to Railway»), а на GitHub уже є новіші:
+
+1. **Deployments** → **Create Deployment** → гілка `main` → **Deploy**
+2. Або відкрити останній deployment з commit `Redirect Vercel to Railway` → **⋯ → Promote to Production**
+3. Перевірка: `https://ваш-сайт.vercel.app/deploy-version.txt` має містити `deploy=2026-06-17-v2`
+4. Після оновлення `key-games.vercel.app` автоматично перенаправляє на Railway
+
+**Працюючий сайт зараз:** `https://keygames-production.up.railway.app`
+
 ### 2.4. CORS на Railway
 
 У Railway оновити `CORS_ALLOWED_ORIGINS`, додати точний Vercel URL:
